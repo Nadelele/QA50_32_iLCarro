@@ -1,12 +1,13 @@
 package pages;
 
+import dto.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
-       super(driver);
+        super(driver);
     }
 
     @FindBy(xpath = "//input[@formcontrolname = 'email']")
@@ -18,15 +19,20 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//button[@type = 'submit']")
     WebElement btnSubmit;
 
-    @FindBy(xpath = "//h2[@class='message']")
-    WebElement loginSubmitText;
+    @FindBy(xpath = "//h2[text()='Logged in success']")
+    WebElement loginSuccessPopUp;
 
-    public void getLoginPage(){
+    public void typeLoginForm(User user) {
+        fieldEmail.sendKeys(user.getEmail());
+        fieldPassword.sendKeys(user.getPassword());
+    }
+
+    public void getLoginPage() {
         getPage("https://ilcarro.web.app/login");
     }
 
     public void clickBtnSubmit() {
-      btnSubmit.click();
+        btnSubmit.click();
     }
 
     public void enterEmail(String text) {
@@ -36,8 +42,13 @@ public class LoginPage extends BasePage {
     public void enterPass(String text) {
         enterText(fieldPassword, text);
     }
+
     public String getLoginSubmitText() {
-        return loginSubmitText.getText();
+        return loginSuccessPopUp.getText();
+    }
+
+    public boolean isLoggedInDisplayed() {
+        return isElementDisplayed(loginSuccessPopUp);
     }
 
 }

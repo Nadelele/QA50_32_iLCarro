@@ -1,5 +1,6 @@
 package ui_tests;
 
+import dto.User;
 import manager.AppManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,13 +10,19 @@ import pages.LoginPage;
 public class LoginTests extends AppManager {
     @Test
     public void loginPositiveTest() {
+        User user = User.builder()
+                .email("sima_simonova370@gmail.com")
+                .password("BSas124!")
+                .build();
         HomePage homePage = new HomePage(getDriver());
         homePage.getHomePage();
         homePage.clickBtnLogin();
         LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.enterEmail("qa50nl@gmail.com");
-        loginPage.enterPass("QWEasd123!");
+        loginPage.typeLoginForm(user);
+//        loginPage.enterEmail("qa50nl@gmail.com");
+//        loginPage.enterPass("QWEasd123!");
         loginPage.clickBtnSubmit();
-        Assert.assertEquals(loginPage.getLoginSubmitText().trim(), "Logged in success");
+        Assert.assertTrue(loginPage.isLoggedInDisplayed());
+        // Assert.assertEquals(loginPage.getLoginSubmitText().trim(), "Logged in success");
     }
 }

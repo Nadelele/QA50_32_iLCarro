@@ -28,4 +28,7 @@ public abstract class BasePage {
     protected void getPage(String text) {
         driver.get(text);
     }
+    public boolean isElementDisplayed(WebElement element){
+        return element.isDisplayed();
+    }
 }
