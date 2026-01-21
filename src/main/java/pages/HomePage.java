@@ -12,12 +12,19 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[contains(@href,'/login')]")
     WebElement btnLogin;
 
+    @FindBy(xpath = "//a[contains(@href, '/registration')]")
+    WebElement btnRegistration;
+
     public void getHomePage() {
         getPage("https://ilcarro.web.app/search");
     }
 
     public void clickBtnLogin() {
        btnLogin.click();
+    }
+
+    public void clickBtnRegistration(){
+        btnRegistration.click();
     }
 
 

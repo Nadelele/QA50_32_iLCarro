@@ -27,24 +27,12 @@ public class LoginPage extends BasePage {
         fieldPassword.sendKeys(user.getPassword());
     }
 
-    public void getLoginPage() {
-        getPage("https://ilcarro.web.app/login");
-    }
+//    public void getLoginPage() {
+//        getPage("https://ilcarro.web.app/login");
+//    }
 
     public void clickBtnSubmit() {
         btnSubmit.click();
-    }
-
-    public void enterEmail(String text) {
-        enterText(fieldEmail, text);
-    }
-
-    public void enterPass(String text) {
-        enterText(fieldPassword, text);
-    }
-
-    public String getLoginSubmitText() {
-        return loginSuccessPopUp.getText();
     }
 
     public boolean isLoggedInDisplayed() {
