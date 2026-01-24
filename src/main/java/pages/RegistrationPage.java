@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.interactions.Actions;
 
 public class RegistrationPage extends BasePage {
     public RegistrationPage(WebDriver driver) {
@@ -21,6 +22,8 @@ public class RegistrationPage extends BasePage {
     WebElement fieldPasswordRegistration;
     @FindBy(id = "terms-of-use")
     WebElement checkBoxAgreeTermsOfUse;
+    @FindBy(xpath = "//label[@for='terms-of-use']")
+    WebElement checkBoxAgree;
     @FindBy(xpath = "//button[text() = 'Y’alla!']")
     WebElement btnSubmitYalla;
     @FindBy(xpath = "//h2[text()='You are logged in success']")
@@ -37,13 +40,22 @@ public class RegistrationPage extends BasePage {
         btnSubmitYalla.click();
     }
 
-    public void setCheckBoxAgreeTermsOfUse() {
-        if (!checkBoxAgreeTermsOfUse.isSelected()) {
-            ((JavascriptExecutor) driver)
-                    .executeScript("arguments[0].click();", checkBoxAgreeTermsOfUse);
-        }
-    }
+//    public void setCheckBoxAgreeTermsOfUse() {
+//        if (!checkBoxAgreeTermsOfUse.isSelected()) {
+//            ((JavascriptExecutor) driver)
+//                    .executeScript("arguments[0].click();", checkBoxAgreeTermsOfUse);
+//        }
+//    }
+
     public boolean isRegisteredDisplayed() {
         return isElementDisplayed(registrationSuccessPopUp);
+    }
+
+    public void clickCheckBoxWithActions() {
+        int y = checkBoxAgree.getSize().getHeight();
+        int x = checkBoxAgree.getSize().getWidth();
+        System.out.println(x + "x" + y);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(checkBoxAgree, 1, 10).click().perform();
     }
 }

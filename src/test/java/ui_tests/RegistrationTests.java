@@ -8,11 +8,14 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.RegistrationPage;
 
+import java.util.Random;
+
 public class RegistrationTests extends AppManager {
     @Test
     public void registrationPositiveTest() {
+        int i  = new Random().nextInt(1000);
         User user = User.builder()
-                .email("testnl2@gmail.com")
+                .email("test" + i + "@gmail.com")
                 .password("BSas124!")
                 .firstName("NameNL")
                 .lastName("LastNameNL")
@@ -21,11 +24,11 @@ public class RegistrationTests extends AppManager {
         HomePage homePage = new HomePage(getDriver());
         homePage.getHomePage();
         homePage.clickBtnRegistration();
-        RegistrationPage registrationPage= new RegistrationPage(getDriver());
+        RegistrationPage registrationPage = new RegistrationPage(getDriver());
         registrationPage.typeRegistrationForm(user);
-        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickCheckBoxWithActions();
         registrationPage.clickBtnSubmitYalla();
-       Assert.assertTrue(registrationPage.isRegisteredDisplayed());
+        Assert.assertTrue(registrationPage.isRegisteredDisplayed());
 
     }
 }
