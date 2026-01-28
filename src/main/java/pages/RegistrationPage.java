@@ -1,7 +1,6 @@
 package pages;
 
 import dto.User;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,8 +19,6 @@ public class RegistrationPage extends BasePage {
     WebElement fieldEmailRegistration;
     @FindBy(id = "password")
     WebElement fieldPasswordRegistration;
-    @FindBy(id = "terms-of-use")
-    WebElement checkBoxAgreeTermsOfUse;
     @FindBy(xpath = "//label[@for='terms-of-use']")
     WebElement checkBoxAgree;
     @FindBy(xpath = "//button[text() = 'Y’alla!']")
@@ -40,22 +37,11 @@ public class RegistrationPage extends BasePage {
         btnSubmitYalla.click();
     }
 
-//    public void setCheckBoxAgreeTermsOfUse() {
-//        if (!checkBoxAgreeTermsOfUse.isSelected()) {
-//            ((JavascriptExecutor) driver)
-//                    .executeScript("arguments[0].click();", checkBoxAgreeTermsOfUse);
-//        }
-//    }
-
-    public boolean isRegisteredDisplayed() {
-        return isElementDisplayed(registrationSuccessPopUp);
-    }
-
     public void clickCheckBoxWithActions() {
         int y = checkBoxAgree.getSize().getHeight();
         int x = checkBoxAgree.getSize().getWidth();
         System.out.println(x + "x" + y);
         Actions actions = new Actions(driver);
-        actions.moveToElement(checkBoxAgree, 1, 10).click().perform();
+        actions.moveToElement(checkBoxAgree, -x/2, -y/2).click().perform();
     }
 }

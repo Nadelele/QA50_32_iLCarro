@@ -19,24 +19,13 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//button[@type = 'submit']")
     WebElement btnSubmit;
 
-    @FindBy(xpath = "//h2[text()='Logged in success']")
-    WebElement loginSuccessPopUp;
-
     public void typeLoginForm(User user) {
         fieldEmail.sendKeys(user.getEmail());
         fieldPassword.sendKeys(user.getPassword());
     }
 
-//    public void getLoginPage() {
-//        getPage("https://ilcarro.web.app/login");
-//    }
-
     public void clickBtnSubmit() {
         btnSubmit.click();
-    }
-
-    public boolean isLoggedInDisplayed() {
-        return isElementDisplayed(loginSuccessPopUp);
     }
 
 }

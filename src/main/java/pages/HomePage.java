@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
+        getPage("https://ilcarro.web.app/search");
     }
 
     @FindBy(xpath = "//a[contains(@href,'/login')]")
@@ -15,17 +16,12 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[contains(@href, '/registration')]")
     WebElement btnRegistration;
 
-    public void getHomePage() {
-        getPage("https://ilcarro.web.app/search");
-    }
-
     public void clickBtnLogin() {
-       btnLogin.click();
+        btnLogin.click();
     }
 
-    public void clickBtnRegistration(){
+    public void clickBtnRegistration() {
         btnRegistration.click();
     }
-
 
 }
