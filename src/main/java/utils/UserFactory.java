@@ -2,7 +2,6 @@ package utils;
 
 import dto.User;
 import net.datafaker.Faker;
-import org.openqa.selenium.remote.http.HttpClient;
 
 public class UserFactory {
     static Faker faker = new Faker();

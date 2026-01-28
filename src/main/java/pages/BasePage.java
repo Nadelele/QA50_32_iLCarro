@@ -33,19 +33,12 @@ public abstract class BasePage {
         return listErrors.stream().anyMatch(e -> e.getText().contains(text));
     }
 
-    protected void enterText(WebElement element, String text) {
-        element.sendKeys(text);
-    }
 
     protected void getPage(String text) {
         driver.get(text);
     }
 
-    public boolean isElementDisplayed(WebElement element) {
-        return element.isDisplayed();
-    }
-
-    public boolean isTextElementPresentWait(WebElement element, String text) {
+      public boolean isTextElementPresentWait(WebElement element, String text) {
         return new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.textToBePresentInElement(element, text));
     }

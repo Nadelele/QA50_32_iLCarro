@@ -32,7 +32,7 @@ public class LoginTests extends AppManager {
                 .isTextInPopUpMessagePresent("Logged in success"));
     }
     @Test
-    public void loginNegativeTestWrongPassword_WOSpecialSymbol(){
+    public void loginNegativeTest_Password_WOSpecialSymbol(){
         User user = User.builder()
                 .email("sima_simonova370@gmail.com")
                 .password("BSas124")
@@ -43,7 +43,7 @@ public class LoginTests extends AppManager {
                 .isTextInPopUpMessagePresent("Login or Password incorrect"));
     }
     @Test
-    public void loginNegativeTest_WrongEmail_Empty(){
+    public void loginNegativeTest_EmailPassEmpty(){
         User user = User.builder()
                 .email(" ")
                 .password("")
@@ -54,4 +54,5 @@ public class LoginTests extends AppManager {
         softAssert.assertTrue(loginPage.isTextInErrorPresent("Password is required"), "validate password");
         softAssert.assertAll();
     }
+
 }
