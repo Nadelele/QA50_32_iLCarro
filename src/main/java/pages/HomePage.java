@@ -3,11 +3,14 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.PropertiesReader;
+
+import static utils.PropertiesReader.*;
 
 public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
-        getPage("https://ilcarro.web.app/search");
+        getPage(PropertiesReader.getProperty("base.properties", "baseUrl"));
     }
 
     @FindBy(xpath = "//a[contains(@href,'/login')]")

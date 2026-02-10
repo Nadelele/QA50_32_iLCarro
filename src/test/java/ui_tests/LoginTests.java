@@ -9,7 +9,9 @@ import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.PopupPage;
+import utils.RetryAnalyzer;
 
+import static utils.PropertiesReader.*;
 
 public class LoginTests extends AppManager {
     LoginPage loginPage;
@@ -19,11 +21,11 @@ public class LoginTests extends AppManager {
         new HomePage(getDriver()).clickBtnLogin();
         loginPage  = new LoginPage(getDriver());
     }
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void loginPositiveTest() {
         User user = User.builder()
-                .email("sima_simonova370@gmail.com")
-                .password("BSas124!")
+                .email(getProperty("base.properties", "login"))
+                .password(getProperty("base.properties", "password"))
                 .build();
         loginPage.typeLoginForm(user);
         loginPage.clickBtnSubmit();
@@ -34,7 +36,7 @@ public class LoginTests extends AppManager {
     @Test
     public void loginNegativeTest_Password_WOSpecialSymbol(){
         User user = User.builder()
-                .email("sima_simonova370@gmail.com")
+                .email(getProperty("base.properties", "login"))
                 .password("BSas124")
                 .build();
         loginPage.typeLoginForm(user);
