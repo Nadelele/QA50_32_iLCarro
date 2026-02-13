@@ -11,6 +11,8 @@ import pages.LoginPage;
 import pages.PopupPage;
 import utils.RetryAnalyzer;
 
+import java.lang.reflect.Method;
+
 import static utils.PropertiesReader.*;
 
 public class LoginTests extends AppManager {
@@ -22,11 +24,12 @@ public class LoginTests extends AppManager {
         loginPage  = new LoginPage(getDriver());
     }
     @Test(retryAnalyzer = RetryAnalyzer.class)
-    public void loginPositiveTest() {
+    public void loginPositiveTest(Method method) {
         User user = User.builder()
                 .email(getProperty("base.properties", "login"))
                 .password(getProperty("base.properties", "password"))
                 .build();
+        logger.info("Start " + method.getName() + " with user " + user);
         loginPage.typeLoginForm(user);
         loginPage.clickBtnSubmit();
         //Assert.assertTrue(loginPage.isLoggedInDisplayed());
