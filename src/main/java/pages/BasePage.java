@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,16 +41,16 @@ public abstract class BasePage {
         driver.get(text);
     }
 
-      public boolean isTextElementPresentWait(WebElement element, String text) {
+    public boolean isTextElementPresentWait(WebElement element, String text) {
         return new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 
-    public <T extends BasePage> T clickButtonHeader(HeaderMenuItem item){
+    public <T extends BasePage> T clickButtonHeader(HeaderMenuItem item) {
         WebElement button = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(item.getLocator())));
         button.click();
-        switch (item){
+        switch (item) {
             case LOGIN -> {
                 return (T) new LoginPage(driver);
             }
@@ -71,7 +72,21 @@ public abstract class BasePage {
             case DELETE_ACCOUNT -> {
                 return (T) new HomePage(driver);
             }
-            default ->  throw new IllegalArgumentException("Invalid parameter");
+            default -> throw new IllegalArgumentException("Invalid parameter");
+        }
+    }
+
+    public void clickWait(WebElement element, int time) {
+        new WebDriverWait(driver, Duration.ofSeconds(time)).until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
+    public boolean urlContains(String urlPart, int time) {
+        try {
+            return new WebDriverWait(driver, Duration.ofSeconds(time)).until(ExpectedConditions.urlContains(urlPart));
+
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }
