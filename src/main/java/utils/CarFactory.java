@@ -16,7 +16,7 @@ public class CarFactory {
                 .seats(faker.number().numberBetween(2,12))
                 .carClass(faker.vehicle().carType())
                 .serialNumber(faker.vehicle().licensePlate())
-                .pricePerDay(faker.number().numberBetween(300.00, 3000.00))
+                .pricePerDay(faker.number().randomDouble(2, 300, 1000))
                 .about(faker.text().text())
                 .build();
         return car;
