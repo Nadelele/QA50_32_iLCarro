@@ -20,6 +20,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[contains(@href, '/registration')]")
     WebElement btnRegistration;
 
+    @FindBy(xpath = "//a[contains(@href, '/let-car-work')]")
+    WebElement btnLetCarWork;
+
     @FindBy(id = "city")
     WebElement inputCity;
     @FindBy(id = "dates")
@@ -35,6 +38,10 @@ public class HomePage extends BasePage {
 
     public void clickBtnRegistration() {
         btnRegistration.click();
+    }
+
+    public void clickButtonLetCarWork() {
+        btnLetCarWork.click();
     }
 
     public void typeSearchCarForm(String city, LocalDate startDate, LocalDate endDate, Boolean isNegative) {
