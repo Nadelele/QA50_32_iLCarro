@@ -40,6 +40,8 @@ public class AddCarTests extends AppManager {
     @Test
     public void addCarPositive() {
         letTheCarWorkPage.typeAddCarForm(positiveCar());
+        letTheCarWorkPage.typeImage("car.jpg");
+        letTheCarWorkPage.clickBtnSubmit();
         Assert.assertTrue(new PopupPage(getDriver())
                 .isTextInPopUpMessagePresent("Your car is successfully added"));
     }

@@ -2,8 +2,12 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropertiesReader;
+import utils.enums.FooterMenuItem;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -93,5 +97,10 @@ public class HomePage extends BasePage {
         StringBuilder res = new StringBuilder();
         return res.append(month.substring(0, 1).toUpperCase())
                 .append(month.substring(1).toLowerCase()).toString();
+    }
+
+    public Boolean clickSocialNetIcon(FooterMenuItem item, String title){
+        driver.findElement(By.xpath(item.getLocator())).click();
+        return new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.titleContains(title));
     }
 }
