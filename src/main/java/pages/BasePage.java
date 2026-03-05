@@ -70,7 +70,7 @@ public abstract class BasePage {
                 return (T) new HomePage(driver);
             }
             case DELETE_ACCOUNT -> {
-                return (T) new HomePage(driver);
+                return (T) new PopupPage(driver);
             }
             default -> throw new IllegalArgumentException("Invalid parameter");
         }
@@ -89,4 +89,6 @@ public abstract class BasePage {
             return false;
         }
     }
+
+
 }

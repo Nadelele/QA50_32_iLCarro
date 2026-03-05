@@ -21,7 +21,7 @@ public class AddCarTests extends AppManager {
     HomePage homePage;
 
     @BeforeMethod
-    public void goToLoginPage() {
+    public void goToAddCarPage() {
         new HomePage(getDriver()).clickBtnLogin();
         loginPage = new LoginPage(getDriver());
         User user = User.builder()

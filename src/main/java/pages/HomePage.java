@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropertiesReader;
-import utils.enums.FooterMenuItem;
+import utils.enums.MenuItem;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -42,10 +42,6 @@ public class HomePage extends BasePage {
 
     public void clickBtnRegistration() {
         btnRegistration.click();
-    }
-
-    public void clickButtonLetCarWork() {
-        btnLetCarWork.click();
     }
 
     public void typeSearchCarForm(String city, LocalDate startDate, LocalDate endDate, Boolean isNegative) {
@@ -99,8 +95,11 @@ public class HomePage extends BasePage {
                 .append(month.substring(1).toLowerCase()).toString();
     }
 
-    public Boolean clickSocialNetIcon(FooterMenuItem item, String title){
+    public Boolean clickMenuItem(MenuItem item, String title){
         driver.findElement(By.xpath(item.getLocator())).click();
         return new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.titleContains(title));
+    }
+    public boolean isMenuItemDisplayed(MenuItem item){
+        return !driver.findElements(By.xpath(item.getLocator())).isEmpty();
     }
 }

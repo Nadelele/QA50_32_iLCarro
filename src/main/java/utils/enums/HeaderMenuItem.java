@@ -1,6 +1,6 @@
 package utils.enums;
 
-public enum HeaderMenuItem {
+public enum HeaderMenuItem implements MenuItem{
     SEARCH("//a[text()=' Search ']"),
     LET_THE_CAR_WORK("//a[text()=' Let the car work ']"),
     TERMS_OF_USE("//a[text()=' Terms of use ']"),
@@ -15,6 +15,7 @@ public enum HeaderMenuItem {
     HeaderMenuItem(String locator) {
         this.locator = locator;
     }
+    @Override
     public String getLocator() {
         return locator;
     }
