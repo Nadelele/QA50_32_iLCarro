@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.PopupPage;
-import pages.RegistrationPage;
 import utils.enums.FooterPagedMenuItems;
 import utils.enums.HeaderMenuItem;
 import static utils.PropertiesReader.getProperty;
@@ -19,7 +18,7 @@ public class NavigationAuthorizedTests extends AppManager {
     HomePage homePage;
     PopupPage popupPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void goToLoginPage(){
         new HomePage(getDriver()).clickBtnLogin();
         loginPage = new LoginPage(getDriver());
@@ -35,7 +34,7 @@ public class NavigationAuthorizedTests extends AppManager {
     }
 
     //Header Menu
-    @Test
+    @Test(groups = "smoke")
     public void headerMenuNavigation_Search() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.SEARCH, "Search"));
@@ -50,7 +49,7 @@ public class NavigationAuthorizedTests extends AppManager {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.TERMS_OF_USE, "Terms of use"));
     }
-    @Test
+    @Test(groups = "smoke")
     public void headerMenuNavigation_Logout() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.LOGOUT, "Search"));

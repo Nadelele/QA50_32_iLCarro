@@ -15,13 +15,13 @@ public class RegistrationTests extends AppManager {
     RegistrationPage registrationPage;
     SoftAssert softAssert = new SoftAssert();
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void goToRegistrationPage(){
         new HomePage(getDriver()).clickBtnRegistration();
         registrationPage = new RegistrationPage(getDriver());
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void registrationPositiveTest() {
         User user = positiveUser();
         System.out.println(user);

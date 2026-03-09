@@ -10,7 +10,7 @@ import utils.enums.HeaderMenuItem;
 
 public class NavigationNonAuthorizedTests extends AppManager {
     //Header Pages Navigation Menu
-    @Test
+    @Test(groups = "smoke")
     public void headerMenuNavigation_Search() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.SEARCH, "Search"));
@@ -20,12 +20,12 @@ public class NavigationNonAuthorizedTests extends AppManager {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.TERMS_OF_USE, "Terms of use"));
     }
-    @Test
+    @Test(groups = "smoke")
     public void headerMenuNavigation_SignUp() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.SIGN_UP, "Registration"));
     }
-    @Test
+    @Test(groups = "smoke")
     public void headerMenuNavigation_LogIn() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.LOGIN, "Login"));

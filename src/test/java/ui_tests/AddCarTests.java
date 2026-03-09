@@ -20,7 +20,7 @@ public class AddCarTests extends AppManager {
     PopupPage popupPage;
     HomePage homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void goToAddCarPage() {
         new HomePage(getDriver()).clickBtnLogin();
         loginPage = new LoginPage(getDriver());
@@ -37,7 +37,7 @@ public class AddCarTests extends AppManager {
         letTheCarWorkPage = new LetTheCarWorkPage(getDriver());
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void addCarPositive() {
         letTheCarWorkPage.typeAddCarForm(positiveCar());
         letTheCarWorkPage.typeImage("car.jpg");

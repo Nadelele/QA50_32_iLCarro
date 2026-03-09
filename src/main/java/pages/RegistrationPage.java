@@ -21,7 +21,7 @@ public class RegistrationPage extends BasePage {
     WebElement fieldPasswordRegistration;
     @FindBy(xpath = "//label[@for='terms-of-use']")
     WebElement checkBoxAgree;
-    @FindBy(xpath = "//button[text() = 'Y’alla!']")
+    @FindBy(xpath = "//button[@type = 'submit']")
     WebElement btnSubmitYalla;
     @FindBy(xpath = "//h2[text()='You are logged in success']")
     WebElement registrationSuccessPopUp;
