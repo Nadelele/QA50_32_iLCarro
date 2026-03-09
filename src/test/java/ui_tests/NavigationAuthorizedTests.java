@@ -39,7 +39,7 @@ public class NavigationAuthorizedTests extends AppManager {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.SEARCH, "Search"));
     }
-    @Test
+    @Test(groups = {"authorized"})
     public void headerMenuNavigation_LetTheCarWork() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.LET_THE_CAR_WORK, "Let the car work!"));
@@ -49,23 +49,23 @@ public class NavigationAuthorizedTests extends AppManager {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.TERMS_OF_USE, "Terms of use"));
     }
-    @Test(groups = "smoke")
+    @Test(groups = {"smoke", "authorized"})
     public void headerMenuNavigation_Logout() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(HeaderMenuItem.LOGOUT, "Search"));
     }
-    @Test
+    @Test(groups = {"authorized"})
     public void headerMenuNavigation_DeleteAccount() {
         homePage.clickButtonHeader(HeaderMenuItem.DELETE_ACCOUNT);
         Assert.assertTrue(new PopupPage(getDriver())
                 .isTextInPopUpMessagePresent("Are you sure that you want delete account? You cant undo this action."));
     }
-    @Test
+    @Test(groups = {"authorized"})
     public void headerMenuNavigation_isSignUpDisplayed() {
         Assert.assertFalse(new HomePage(getDriver())
                 .isMenuItemDisplayed(HeaderMenuItem.SIGN_UP));
     }
-    @Test
+    @Test(groups = {"authorized"})
     public void headerMenuNavigation_isLogInDisplayed() {
         Assert.assertFalse(new HomePage(getDriver())
                 .isMenuItemDisplayed(HeaderMenuItem.LOGIN));
@@ -77,7 +77,7 @@ public class NavigationAuthorizedTests extends AppManager {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(FooterPagedMenuItems.SEARCH, "Search"));
     }
-    @Test
+    @Test(groups = {"authorized"})
     public void footerMenuPagesNavigation_LetTheCarWork() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(FooterPagedMenuItems.LET_THE_CAR_WORK, "Let the car work!"));
@@ -87,17 +87,17 @@ public class NavigationAuthorizedTests extends AppManager {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(FooterPagedMenuItems.TERMS_OF_USE, "Terms of use"));
     }
-    @Test
+    @Test(groups = {"authorized"})
     public void footerMenuPagesNavigation_Logout() {
         Assert.assertTrue(new HomePage(getDriver())
                 .clickMenuItem(FooterPagedMenuItems.LOGOUT, "Search"));
     }
-    @Test
+    @Test(groups = {"authorized"})
     public void footerMenuPagesNavigation_isSignUpDisplayed() {
         Assert.assertFalse(new HomePage(getDriver())
                 .isMenuItemDisplayed(FooterPagedMenuItems.SIGN_UP));
     }
-    @Test
+    @Test(groups = {"authorized"})
     public void footerMenuPagesNavigation_isLogInDisplayed() {
         Assert.assertFalse(new HomePage(getDriver())
                 .isMenuItemDisplayed(FooterPagedMenuItems.LOGIN));

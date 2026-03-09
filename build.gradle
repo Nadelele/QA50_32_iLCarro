@@ -29,3 +29,18 @@ task smoketests(type: Test){
         suites 'src/main/resources/smoketests.xml'
     })
 }
+task authorizedtests(type: Test){
+    useTestNG({
+        suites 'src/main/resources/authorized.xml'
+    })
+}
+task different_tests(type: Test){
+    useTestNG(){
+        def suite = System.getProperty('suite', 'smoketests')
+        if(suite.equalsIgnoreCase('authorizedtests')){
+            suites 'src/main/resources/authorized.xml'
+        }else{
+            suites 'src/main/resources/smoketests.xml'
+        }
+    }
+}

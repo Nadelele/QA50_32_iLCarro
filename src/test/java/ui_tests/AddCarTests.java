@@ -37,7 +37,7 @@ public class AddCarTests extends AppManager {
         letTheCarWorkPage = new LetTheCarWorkPage(getDriver());
     }
 
-    @Test(groups = "smoke")
+    @Test(groups = {"smoke", "authorized"})
     public void addCarPositive() {
         letTheCarWorkPage.typeAddCarForm(positiveCar());
         letTheCarWorkPage.typeImage("car.jpg");
